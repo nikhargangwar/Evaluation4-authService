@@ -3,8 +3,8 @@ const authServices = require('../services/authServices.js');
 const addNewUser = async(req,res)=>{
 
     try{
-        const {username,password}=req.body;
-        const userResult = await authServices.addNewUser(username,password);
+        const {email,password}=req.body;
+        const userResult = await authServices.addNewUser(email,password);
         res.status(201).json(userResult);
     }
     catch(err){
@@ -15,7 +15,7 @@ const addNewUser = async(req,res)=>{
 const loginUser = async(req,res)=>{
     try{
     
-        const matchUser = await authServices.loginVerification(req.body.username,req.body.password);
+        const matchUser = await authServices.loginVerification(req.body.email,req.body.password);
         res.status(200).json(matchUser);
     }
     catch(err){
