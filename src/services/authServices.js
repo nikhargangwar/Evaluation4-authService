@@ -14,10 +14,11 @@ exports.addNewUser = async(email,password) => {
 }
 
 exports.loginVerification = async(email, password ) => {
-    
+   
     const userResult = await db.UserTable.findOne({ where: { email } });
     if(userResult){
-        
+      
+
         const passwordMatch = await bcrypt.compare(password,userResult.password);
         
         if(passwordMatch){
